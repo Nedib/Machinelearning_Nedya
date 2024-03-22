@@ -29,7 +29,7 @@ def split_to_X_y(df, target_column):
     return X, y
 
 # Read data and split it
-chosen_data = pd.read_csv("C:/Users/NedyaIbrahim-AI23GBG/Documents/Github/Machinelearning_Nedya/Labb/asset/dataset_cleaned.csv")
+chosen_data = pd.read_csv("Labb/asset/dataset_cleaned.csv")
 X, y = split_to_X_y(chosen_data, "cardio")
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random_state=42)
 

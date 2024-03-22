@@ -11,9 +11,8 @@ import pandas as pd
 import joblib
 
 # Load the test samples and the trained model
-test_samples = pd.read_csv("C:/Users/NedyaIbrahim-AI23GBG/Documents/Github/Machinelearning_Nedya/Labb/asset/test_samples.csv")
-trained_model = joblib.load("C:/Users/NedyaIbrahim-AI23GBG/Documents/Github/Machinelearning_Nedya/Labb/asset/trained_model.pkl")
-
+test_samples = pd.read_csv("Labb/asset/test_samples.csv")
+trained_model = joblib.load("Labb/asset/trained_model.pkl")
 
 # Remove the "cardio" column from the test samples
 test_samples = test_samples.drop(columns=['cardio'], errors='ignore')

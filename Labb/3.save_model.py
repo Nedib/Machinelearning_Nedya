@@ -20,7 +20,7 @@ from sklearn.preprocessing import StandardScaler
 import seaborn as sns
 
 # Load data and split into features and target variable
-chosen_data = chosen_data = pd.read_csv("C:/Users/NedyaIbrahim-AI23GBG/Documents/Github/Machinelearning_Nedya/Labb/asset/dataset_cleaned.csv")
+chosen_data = chosen_data = pd.read_csv("Labb/asset/dataset_cleaned.csv")
 X = chosen_data.drop(columns=["cardio"])
 y = chosen_data["cardio"]
 

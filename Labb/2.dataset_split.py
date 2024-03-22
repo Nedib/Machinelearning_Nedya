@@ -32,7 +32,8 @@ def scale_data(X_train, X_val, scaler):
     return X_train_scaled, X_val_scaled
 
 # Read dataset
-df = pd.read_csv(r"C:\Users\NedyaIbrahim-AI23GBG\Documents\Github\Machinelearning_Nedya\Labb\asset\dataset_cleaned.csv")
+df = pd.read_csv("Labb/asset/dataset_cleaned.csv")
+
 
 # Create dataset with categorical features (df_cat)
 df_categorical = df.drop(["ap_hi", "ap_lo", "height", "weight", "bmi"], axis=1)
