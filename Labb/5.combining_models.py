@@ -67,11 +67,11 @@ pipe_RFC = Pipeline([
 
 # Parameters for grid search for each algorithm
 param_grid_log_reg = {
-    'logistic__C': [0.01, 0.1, 1.0, 10, 100],
-    'logistic__penalty': ["l1", "l2" "10"],
-    'logistic__max_iter': [500, 1000, 5000, 10000, 20000],
-    'logistic__tol': [1e-4, 1e-3, 1e-2], 
-    'logistic__solver': ["liblinear", "saga"]  
+    "logistic__C": [0.01, 0.1, 1.0, 10, 100],
+    "logistic__penalty": ["l1", "l2"],
+    "logistic__max_iter": [500, 1000, 5000, 10000, 20000],
+    "logistic__tol": [1e-4, 1e-3, 1e-2], 
+    "logistic__solver": ["liblinear", "saga"]  
 }
 param_grid_RFC = {"random_forest__n_estimators": list(range(20, 60))}
 param_grid_KNN = {'knn__n_neighbors': [3, 5, 7, 9, 11]}
