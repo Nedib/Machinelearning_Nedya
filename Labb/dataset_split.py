@@ -32,8 +32,7 @@ def scale_data(X_train, X_val, scaler):
     return X_train_scaled, X_val_scaled
 
 # Read dataset
-df = pd.read_csv(r"C:\Users\NedyaIbrahim-AI23GBG\Documents\Github\Machinelearning-Nedya-Ibrahim\Labb\asset\dataset_cleaned.csv")
-
+df = pd.read_csv(r"C:\Users\NedyaIbrahim-AI23GBG\Documents\Github\Machinelearning_Nedya\Labb\asset\dataset_cleaned.csv")
 
 # Create dataset with categorical features (df_cat)
 df_categorical = df.drop(["ap_hi", "ap_lo", "height", "weight", "bmi"], axis=1)
@@ -68,18 +67,16 @@ X_raw_train_scaled_minmax, X_raw_val_scaled_minmax = scale_data(X_raw_train, X_r
 plt.figure(figsize=(10, 8))
 sns.heatmap(df_categorical.corr(), annot=True, cmap="coolwarm", fmt=".2f")
 plt.title("Correlation Heatmap - df_categorical")
+plt.savefig("Labb/Picture/correlation_heatmap_categorical.png")  
 plt.show()
-
-plt.savefig("maps/correlation_heatmap_df_categorical.png")
 plt.close()
 
 # Plot heatmap for df_non_categorical
 plt.figure(figsize=(10, 8))
 sns.heatmap(df_non_categorical.corr(), annot=True, cmap="coolwarm", fmt=".2f")
 plt.title("Correlation Heatmap - df_non_categorical")
+plt.savefig("Labb/Picture/correlation_heatmap_non_categorical.png")  
 plt.show()
-
-plt.savefig("maps/correlation_heatmap_df_non_categorical.png")
 plt.close()
 
 # Print correlation matrices
