@@ -43,7 +43,7 @@ def evaluate_model(model, test_X, test_y, title, filename):
     disp = ConfusionMatrixDisplay(confusion_matrix=cm)
     disp.plot()
     plt.title(title)
-    plt.savefig(filename + ".png")  # Save confusion matrix plot as PNG
+    plt.savefig("Labb/Picture/" + filename + ".png")
     plt.show()
 
 # Pipelines for different algorithms
@@ -69,28 +69,24 @@ pipe_RFC = Pipeline([
 # Parameters for grid search for each algorithm
 param_grid_log_reg = {
     'logistic__C': [0.01, 0.1, 1.0, 10, 100],
-    'logistic__penalty': ['l1', 'l2'],
+    'logistic__penalty': ["l1", "l2" "10"],
     'logistic__max_iter': [500, 1000, 5000, 10000, 20000],
     'logistic__tol': [1e-4, 1e-3, 1e-2], 
-    'logistic__solver': ['liblinear', 'saga']  
+    'logistic__solver': ["liblinear", "saga"]  
 }
-param_grid_RFC = {'random_forest__n_estimators': list(range(20, 60))}
+param_grid_RFC = {"random_forest__n_estimators": list(range(20, 60))}
 param_grid_KNN = {'knn__n_neighbors': [3, 5, 7, 9, 11]}
 
 # Function for grid search and training for a given algorithm
 def perform_grid_search_and_train(model_name, model_pipeline, param_grid, X_train, y_train, X_val, y_val):
-    grid_search = GridSearchCV(model_pipeline, param_grid, cv=5, verbose=1, scoring='recall')
+    grid_search = GridSearchCV(model_pipeline, param_grid, cv=5, verbose=1, scoring="recall")
     grid_search.fit(X_train, y_train)
 
     # Print best parameter combination
     print(f"Best parameters for {model_name}:", grid_search.best_params_)
 
-    # Save the best model
-    best_model = grid_search.best_estimator_
-    joblib.dump(best_model, f"best_{model_name}_model.pkl")
-
     # Evaluate the best model on validation data
-    evaluate_model(best_model, X_val, y_val, f"Classification report for {model_name}:", f"{model_name}_confusion_matrix")
+    evaluate_model(grid_search.best_estimator_, X_val, y_val, f"Classification report for {model_name}:", f"{model_name}_confusion_matrix")
 
     return grid_search
 
