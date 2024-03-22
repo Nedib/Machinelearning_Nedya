@@ -11,11 +11,12 @@ import pandas as pd
 import joblib
 
 # Load the test samples and the trained model
-test_samples = pd.read_csv("test_samples.csv")
-trained_model = joblib.load("trained_model.pkl")
+test_samples = pd.read_csv("C:/Users/NedyaIbrahim-AI23GBG/Documents/Github/Machinelearning_Nedya/Labb/asset/test_samples.csv")
+trained_model = joblib.load("C:/Users/NedyaIbrahim-AI23GBG/Documents/Github/Machinelearning_Nedya/Labb/asset/trained_model.pkl")
+
 
 # Remove the "cardio" column from the test samples
-test_samples = test_samples.drop(columns=["cardio"], errors="ignore")
+test_samples = test_samples.drop(columns=['cardio'], errors='ignore')
 
 # Make predictions on the test samples
 predictions = trained_model.predict(test_samples)
@@ -30,11 +31,11 @@ prediction_df = pd.DataFrame({
     "prediction": predictions
 })
 
-# Export predictions to a CSV file
-prediction_df.to_csv("predictions.csv", index=False)
+# Export predictions to a CSV file in the "assets" directory
+prediction_df.to_csv("Labb/asset/predictions.csv", index=False)
 
-# Läs in filen med förutsägelser
-predictions = pd.read_csv("predictions.csv")
+# Läs in filen med förutsägelser från "assets" mappen
+predictions = pd.read_csv("Labb/asset/predictions.csv")
 
 # Visa de första några rader av data
 print(predictions.head())
