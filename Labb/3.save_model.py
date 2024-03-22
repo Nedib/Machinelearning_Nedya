@@ -12,10 +12,12 @@ by predicting outcomes on the test set. Additionally, a subset of 100 rows is ra
 import numpy as np
 import pandas as pd
 import joblib
+import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, confusion_matrix
 from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import StandardScaler
+import seaborn as sns
 
 # Load data and split into features and target variable
 chosen_data = chosen_data = pd.read_csv("C:/Users/NedyaIbrahim-AI23GBG/Documents/Github/Machinelearning_Nedya/Labb/asset/dataset_cleaned.csv")
@@ -52,3 +54,15 @@ print(f"Accuracy of the final model on the test set: {accuracy:.4f}")
 
 # Save the trained model to a .pkl file
 joblib.dump(final_model, "Labb/asset/trained_model.pkl", compress=True)
+
+# Compute confusion matrix
+cm = confusion_matrix(y_test, y_pred)
+
+# Plot confusion matrix with seaborn
+plt.figure(figsize=(8, 6))
+sns.heatmap(cm, annot=True, fmt="d", cmap="Blues")
+plt.title("Confusion Matrix")
+plt.xlabel("Predicted Label")
+plt.ylabel("True Label")
+plt.savefig("Labb/Picture/confusion_matrix.png")
+plt.show()
