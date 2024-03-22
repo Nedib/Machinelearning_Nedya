@@ -18,15 +18,15 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import StandardScaler
 
 # Load data and split into features and target variable
-chosen_data = pd.read_csv("C:/Users/NedyaIbrahim-AI23GBG/Documents/Github/Machinelearning-Nedya-Ibrahim/Labb/asset/dataset_cleaned.csv")
+chosen_data = chosen_data = pd.read_csv("C:/Users/NedyaIbrahim-AI23GBG/Documents/Github/Machinelearning_Nedya/Labb/asset/dataset_cleaned.csv")
 X = chosen_data.drop(columns=["cardio"])
 y = chosen_data["cardio"]
 
 # Sample 100 rows randomly from the dataset
-test_samples = chosen_data.sample(n=100, random_state=42)
+test_samples = chosen_data.sample(n=1000, random_state=42)
 
 # Export the test samples to a CSV file
-test_samples.to_csv("test_samples.csv", index=False)
+test_samples.to_csv("Labb/asset/test_samples.csv", index=False)
 
 # Remove the test samples from the dataset
 remaining_data = chosen_data.drop(test_samples.index)
@@ -51,4 +51,4 @@ accuracy = accuracy_score(y_test, y_pred)
 print(f"Accuracy of the final model on the test set: {accuracy:.4f}")
 
 # Save the trained model to a .pkl file
-joblib.dump(final_model, "trained_model.pkl", compress=True)
+joblib.dump(final_model, "Labb/asset/trained_model.pkl", compress=True)
